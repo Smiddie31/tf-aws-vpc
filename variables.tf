@@ -26,6 +26,6 @@ variable "vpc_cidr" {
 }
 
 variable "infra_env" {
-  type = string
+  type        = string
   description = "infrastructure environment"
 }
