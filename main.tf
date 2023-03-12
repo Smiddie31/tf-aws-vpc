@@ -12,7 +12,7 @@ resource "aws_vpc" "vpc" {
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    Name = "main"
+    Name = "main-${var.infra_env}"
     Project = "smiddievpc"
     Environment = var.infra_env
     ManagedBy = "terraform"
