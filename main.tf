@@ -19,6 +19,19 @@ resource "aws_internet_gateway" "gw" {
   }
 }
 
+resource "aws_route_table" "publicrt" {
+  vpc_id = aws_vpc.vpc.id
+
+  route {
+    cidr_block = "0.0.0.0"
+    gateway_id = aws_internet_gateway.gw.id
+  }
+}
+
+resource "aws_route_table_association" "a" {
+  subnet_id      = aws_subnet.public.id
+  route_table_id = aws_route_table.publicrt.id
+}
 resource "aws_subnet" "public" {
   for_each          = var.public_subnet_numbers
   vpc_id            = aws_vpc.vpc.id
