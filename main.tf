@@ -9,6 +9,16 @@ resource "aws_vpc" "vpc" {
   }
 }
 
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.vpc.id
+  tags = {
+    Name = "main"
+    Project = "smiddievpc"
+    Environment = var.infra_env
+    ManagedBy = "terraform"
+  }
+}
+
 resource "aws_subnet" "public" {
   for_each          = var.public_subnet_numbers
   vpc_id            = aws_vpc.vpc.id
