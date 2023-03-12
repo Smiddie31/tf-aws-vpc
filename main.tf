@@ -2,7 +2,7 @@ resource "aws_vpc" "vpc" {
   cidr_block = var.vpc_cidr
 
   tags = {
-    Name        = "smiddie=${var.infra_env}-vpc"
+    Name        = "smiddie-${var.infra_env}-vpc"
     Project     = "smiddievpc"
     Environment = var.infra_env
     ManagedBy   = "terraform"
